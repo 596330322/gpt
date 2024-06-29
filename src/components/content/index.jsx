@@ -1,0 +1,31 @@
+import { Spin } from "antd";
+import svg from "../../gpt.svg";
+import { v4 as uuidv4 } from "uuid";
+export default function Content(props) {
+  const { history } = props;
+  return (
+    <>
+      {history.map((item) => (
+        <div
+          key={uuidv4()}
+          style={{
+            flexDirection: item.role === "user" ? "row-reverse" : "row",
+            display: "flex",
+          }}
+        >
+          <div className={item.role === "user" ? "user-box" : "gpt-box"}>
+            {item.role !== "user" && <img src={svg} />}
+            <div className="content">
+              <div className="title">{item.role}</div>
+              {!item.content ? (
+                <Spin spinning={true} />
+              ) : (
+                <div className="text">{item.content}</div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </>
+  );
+}
