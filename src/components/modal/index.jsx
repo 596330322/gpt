@@ -27,10 +27,8 @@ const Model = [
   "google/gemma-2-9b-it:free",
 ];
 export default function Dialog(props) {
-  const [key, setKey] = useState(
-    "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"
-  );
-  const [model, setModel] = useState("google/gemma-2-9b-it:free");
+  const [key, setKey] = useState("");
+  const [model, setModel] = useState("");
   const [show, toggleShow] = useState(true);
   function onOk() {
     if (!model || !key) {
