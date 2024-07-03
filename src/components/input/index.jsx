@@ -1,13 +1,14 @@
 import { Input } from "antd";
 import { UpCircleFilled } from "@ant-design/icons";
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect, memo, useRef } from "react";
 import "./index.less";
 const Inputs = memo(
   (props) => {
     const [value, setValue] = useState("");
     const [disabled, setDisabled] = useState(true);
+    const focus = useRef();
     function handleKeyDown(e) {
-      if (disabled) {
+      if (disabled || !value.trim()) {
         return;
       }
       if (e.keyCode === 13) {
@@ -17,13 +18,17 @@ const Inputs = memo(
       }
     }
     useEffect(() => {
+      setFocus();
       setDisabled(false);
     }, [props.assistantList.length]);
-
+    const setFocus = () => {
+      focus.current.focus();
+    };
     return (
       <div className="input-box">
         {props.children}
         <Input
+          ref={focus}
           value={value}
           onChange={(e) => {
             setValue(e.target.value);

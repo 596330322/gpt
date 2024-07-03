@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import main from "./components/openai/index.js";
 import Modal from "./components/modal/index.jsx";
 import Content from "./components/content/index.jsx";
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { message } from "antd";
 function App() {
   // gpt answers
   const [assistantList, setAssistantList] = useState([]);
@@ -14,14 +16,7 @@ function App() {
   // config
   const [config, setConfig] = useState({});
   const containerRef = useRef();
-  const fetchData = async () => {
-    try {
-      await main(history, config);
-    } catch (error) {
-      setHistory(history.slice(0, -1));
-      setUserList(userList.slice(0, -1));
-    }
-  };
+
   useEffect(() => {
     const handleMessage = (event) => {
       if (event.data.source === "stream") {
@@ -43,7 +38,15 @@ function App() {
   useEffect(() => {
     config.key && fetchData();
   }, [config.key, config.model]);
-
+  const fetchData = async () => {
+    try {
+      await main(history, config);
+    } catch (error) {
+      setHistory(history.slice(0, -1));
+      setUserList(userList.slice(0, -1));
+      message.error("看来出了点问题，试试别的吧");
+    }
+  };
   async function onEnter(content) {
     setHistory([
       ...history,
@@ -74,6 +77,7 @@ function App() {
       <Input onEnter={onEnter} assistantList={assistantList}>
         <Modal onConfig={onConfig} />
       </Input>
+      <SpeedInsights />
     </div>
   );
 }

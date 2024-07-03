@@ -1,5 +1,5 @@
 import { Modal, Select, Input, FloatButton } from "antd";
-import { useState, memo } from "react";
+import { useState, memo, useEffect } from "react";
 import { SettingOutlined } from "@ant-design/icons";
 const Option = Select.Option;
 const Model = [
@@ -29,14 +29,28 @@ const Model = [
 const Dialog = memo((props) => {
   const [key, setKey] = useState();
   const [model, setModel] = useState("google/gemma-2-9b-it:free");
-  const [show, toggleShow] = useState(true);
+  const [show, toggleShow] = useState(false);
+  useEffect(() => {
+    const _key = localStorage.getItem("key");
+    const _model = localStorage.getItem("model");
+    if (!_key || !_model) {
+      toggleShow(true);
+    } else {
+      setKey(_key);
+      setModel(_model);
+      props.onConfig({ key: _key, model: _model });
+    }
+  }, []);
   function onOk() {
     if (!model || !key) {
       return;
     }
     props.onConfig({ key, model });
+    localStorage.setItem("key", key);
+    localStorage.setItem("model", model);
     toggleShow(false);
   }
+
   return (
     <div style={{}}>
       <FloatButton

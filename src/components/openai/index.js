@@ -30,7 +30,7 @@ const getReaderText = (str) => {
     const matchStrItem = _.match(/data:\s*({.*?})\s*\n/)[1];
     const data = JSON.parse(matchStrItem);
     if(data.error) {
-      message.error(data.error.message)
+      message.error(`这个key没法使用这个模型了，换一个吧。${data.error.message}`)
       throw new Error()
     }
     matchStr += data?.choices[0].delta?.content || '';
@@ -67,7 +67,6 @@ async function main(messages, config) {
   try {
     while (true) {
       const { done, value } = await reader.read();
-      console.log(encode.decode(value))
       const text = getReaderText(encode.decode(value));
       tmp+=text.content
       if (done) {
