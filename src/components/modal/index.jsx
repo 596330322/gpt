@@ -26,7 +26,7 @@ const Model = [
   "gpt-3.5-turbo-16k-0613",
   "google/gemma-2-9b-it:free",
 ];
-export default Dialog = memo((props) => {
+const Dialog = memo((props) => {
   const [key, setKey] = useState();
   const [model, setModel] = useState("google/gemma-2-9b-it:free");
   const [show, toggleShow] = useState(true);
@@ -78,3 +78,4 @@ export default Dialog = memo((props) => {
     </div>
   );
 });
+export default Dialog;
