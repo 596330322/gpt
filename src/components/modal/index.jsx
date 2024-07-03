@@ -1,5 +1,5 @@
-import { Modal, Select, Input, Button, FloatButton } from "antd";
-import { useState } from "react";
+import { Modal, Select, Input, FloatButton } from "antd";
+import { useState, memo } from "react";
 import { SettingOutlined } from "@ant-design/icons";
 const Option = Select.Option;
 const Model = [
@@ -26,9 +26,9 @@ const Model = [
   "gpt-3.5-turbo-16k-0613",
   "google/gemma-2-9b-it:free",
 ];
-export default function Dialog(props) {
-  const [key, setKey] = useState("");
-  const [model, setModel] = useState("");
+export default Dialog = memo((props) => {
+  const [key, setKey] = useState();
+  const [model, setModel] = useState("google/gemma-2-9b-it:free");
   const [show, toggleShow] = useState(true);
   function onOk() {
     if (!model || !key) {
@@ -77,4 +77,4 @@ export default function Dialog(props) {
       </Modal>
     </div>
   );
-}
+});
