@@ -8,7 +8,13 @@ p{
 }
 @media (min-width: 768px) {
   /* PC样式 */
-  .container { flex: 1; overflow: auto; padding: 4rem 8rem;width: 100%;box-sizing: border-box;}
+  .container {
+    flex: 1;
+    overflow: auto;
+    padding: 4rem 8rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
   .gpt-box{
     max-width: 70%;
   }
@@ -21,11 +27,10 @@ p{
   .container {
     flex: 1;
     overflow:auto;
-    padding:0 2rem;
+    padding:2rem;
     width: 100%;
     box-sizing: border-box;
-    margin-top: 3rem;
-    margin-bottom: 2rem;
+    padding: 3rem;
   }
   .gpt-box{
     max-width: 90%;
@@ -51,6 +56,7 @@ p{
   color: #fff;
   font-size: 1.4rem;
   font-weight: bold;
+  z-index: 99;
 }
 .App{
   display: flex;
@@ -58,7 +64,7 @@ p{
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 100vh;
+  // height: 100vh;
 }
 .gpt-box{
   display:  inline-flex;

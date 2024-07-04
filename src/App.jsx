@@ -59,8 +59,7 @@ function App() {
   function scrollToBottom() {
     setTimeout(() => {
       const sheight = containerRef.current.scrollHeight;
-      const cheight = containerRef.current.clientHeight;
-      sheight - cheight > 0 && containerRef.current.scrollTo(0, sheight);
+      window.scrollTo({ top: sheight });
     }, 0);
   }
   function onConfig({ model, key }) {
