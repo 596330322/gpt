@@ -71,6 +71,7 @@ function App() {
   }
   return (
     <div className="App">
+      <div className="nav">Assistant</div>
       <div className="container" ref={containerRef}>
         <Content history={history} />
       </div>

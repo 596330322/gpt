@@ -18,7 +18,15 @@ p{
 }
 @media (max-width: 767px) {
   /* 移动端样式 */
-  .container { flex: 1; overflow:auto; padding: 2rem;width: 100%;box-sizing: border-box; }
+  .container {
+    flex: 1;
+    overflow:auto;
+    padding:0 2rem;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+  }
   .gpt-box{
     max-width: 90%;
     .text{
@@ -29,6 +37,20 @@ p{
   .user-box{
     max-width: 90%;
   }
+}
+.nav{
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2rem;
+  background-color: #92ff92;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 .App{
   display: flex;

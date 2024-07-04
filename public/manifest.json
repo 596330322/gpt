@@ -3,14 +3,19 @@
   "name": "GPT",
   "icons": [
     {
-      "src": "gpt.ico",
-      "type": "image/x-icon",
-      "sizes": "128x128"
+      "src": "gpt.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
     },
     {
       "src": "gpt.svg",
-      "type": "image/x-icon",
-      "sizes": "144x144"
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "gpt.svg",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
