@@ -36,6 +36,7 @@ const Inputs = memo(
           size="large"
           onKeyDown={handleKeyDown}
           disabled={disabled}
+          autoFocus={true}
           suffix={
             <UpCircleFilled onClick={() => handleKeyDown({ keyCode: 13 })} />
           }
