@@ -2,8 +2,6 @@ import { Spin } from "antd";
 import svg from "../../gpt.svg";
 import { v4 as uuidv4 } from "uuid";
 import Assistant from "../assistant";
-export const voice = new SpeechSynthesisUtterance();
-voice.rate = 1.1;
 export default function Content(props) {
   const { history } = props;
   return (

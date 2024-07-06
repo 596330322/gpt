@@ -8,12 +8,16 @@ import ReactMarkdown from "react-markdown";
 import { message } from "antd";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/atom-one-dark.css";
-import { voice } from "../content";
 export default ({ item }) => {
+  const voice = new SpeechSynthesisUtterance();
+  voice.rate = 1.1;
+  voice.volume = 0.5;
   const [isPlay, setPlay] = useState(false);
   useEffect(() => {
-    voice.onend = () => {
-      setPlay(false);
+    speechSynthesis.onvoiceschanged = () => {
+      if (!speechSynthesis.speaking) {
+        setPlay(false);
+      }
     };
     voice.onpause = () => {
       setPlay(false);
@@ -25,7 +29,7 @@ export default ({ item }) => {
       setPlay(false);
     };
     return () => {
-      speechSynthesis.cancel();
+      speechSynthesis.onvoiceschanged = null;
     };
   }, []);
   const copy = async (text) => {
