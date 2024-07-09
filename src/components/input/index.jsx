@@ -18,9 +18,14 @@ const Inputs = memo(
       }
     }
     useEffect(() => {
-      setFocus();
-      setDisabled(false);
-    }, [props.assistantList.length]);
+      console.log(props.streaming);
+      if (props.streaming) {
+        setDisabled(true);
+      } else {
+        setDisabled(false);
+        setFocus();
+      }
+    }, [props.streaming]);
     const setFocus = () => {
       focus.current.focus();
     };

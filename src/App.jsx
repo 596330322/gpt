@@ -16,11 +16,16 @@ function App() {
   // config
   const [config, setConfig] = useState({});
   const containerRef = useRef();
-
+  const [streaming, setSteaming] = useState(false);
   useEffect(() => {
     const handleMessage = (event) => {
       if (event.data.source === "stream") {
         // 更新状态
+        if (event.data.state === "done") {
+          setSteaming(false);
+        } else {
+          setSteaming(true);
+        }
         setAssistantList((pre) => [...pre, event.data.data]);
         setHistory((pre) => [...pre.slice(0, -1), event.data.data]);
       }
@@ -70,7 +75,11 @@ function App() {
       <div className="container" ref={containerRef}>
         <Content history={history} />
       </div>
-      <Input onEnter={onEnter} assistantList={assistantList}>
+      <Input
+        onEnter={onEnter}
+        assistantList={assistantList}
+        streaming={streaming}
+      >
         <Modal onConfig={onConfig} />
       </Input>
       <SpeedInsights />
