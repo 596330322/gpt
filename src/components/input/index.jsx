@@ -24,6 +24,7 @@ const Inputs = memo(
     const setFocus = () => {
       focus.current.focus();
     };
+
     return (
       <div className="input-box">
         {props.children}

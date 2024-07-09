@@ -23,7 +23,9 @@ function App() {
         // 更新状态
         setAssistantList((pre) => [...pre, event.data.data]);
         setHistory((pre) => [...pre.slice(0, -1), event.data.data]);
-        scrollToBottom();
+        if (event.data.state === "done") {
+          scrollToBottom();
+        }
       }
     };
     window.addEventListener("message", handleMessage);
