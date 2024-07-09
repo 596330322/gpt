@@ -23,9 +23,6 @@ function App() {
         // 更新状态
         setAssistantList((pre) => [...pre, event.data.data]);
         setHistory((pre) => [...pre.slice(0, -1), event.data.data]);
-        if (event.data.state === "done") {
-          scrollToBottom();
-        }
       }
     };
     window.addEventListener("message", handleMessage);
@@ -40,6 +37,10 @@ function App() {
   useEffect(() => {
     config.key && fetchData();
   }, [config.key, config.model]);
+  useEffect(() => {
+    const sheight = containerRef.current.scrollHeight;
+    window.scrollTo({ top: sheight });
+  }, [containerRef?.current?.scrollHeight]);
   const fetchData = async () => {
     try {
       await main(history, config);
@@ -56,13 +57,6 @@ function App() {
       { role: "assistant", content: "" },
     ]);
     setUserList([...userList, { role: "user", content }]);
-    scrollToBottom();
-  }
-  function scrollToBottom() {
-    setTimeout(() => {
-      const sheight = containerRef.current.scrollHeight;
-      window.scrollTo({ top: sheight });
-    }, 0);
   }
   function onConfig({ model, key }) {
     setConfig({ model, key });
