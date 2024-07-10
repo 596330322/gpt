@@ -2,6 +2,8 @@
   "name": "gpt",
   "version": "0.1.0",
   "private": true,
+  "main": "main.js",
+  "homepage": ".",
   "dependencies": {
     "@ant-design/icons": "^5.3.7",
     "@babel/core": "^7.16.0",
@@ -71,7 +73,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "electron-dev": "electron . dev",
+    "electron": "electron ."
   },
   "eslintConfig": {
     "extends": [
@@ -148,6 +152,7 @@
     ]
   },
   "devDependencies": {
+    "electron": "^31.2.0",
     "less": "^4.2.0",
     "less-loader": "^12.2.0"
   }
