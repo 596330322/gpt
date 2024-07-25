@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "assistant",
+  "version": "1.0",
+  "description": "一个ai插件，基于openrouter开发，你需要去https://openrouter.ai/申请你的个人key然后使用。gemini-free是免费的",
+  "browser_action": {
+    "default_icon": {
+      "16": "build/gpt.ico",
+      "128": "build/gpt.ico"
+    },
+    "default_title": "assistant",
+    "default_popup": "build/index.html"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}

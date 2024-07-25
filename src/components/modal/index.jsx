@@ -3,6 +3,7 @@ import { useState, memo, useEffect } from "react";
 import { SettingOutlined } from "@ant-design/icons";
 const Option = Select.Option;
 const Model = [
+  "google/gemma-2-27b-it",
   "gpt-4o",
   "gpt-4o-2024-05-13",
   "gpt-4-turbo",
@@ -28,7 +29,7 @@ const Model = [
 ];
 const Dialog = memo((props) => {
   const [key, setKey] = useState();
-  const [model, setModel] = useState("google/gemma-2-9b-it:free");
+  const [model, setModel] = useState("google/gemma-2-27b-it");
   const [show, toggleShow] = useState(false);
   useEffect(() => {
     const _key = localStorage.getItem("key");
